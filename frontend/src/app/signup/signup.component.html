@@ -1,0 +1,55 @@
+<div class="container ">
+    <div class="row">
+        <div class="col-md-12">
+            <div class=" p-3 mb-5   card">
+                <div class="text-center">
+                    <h1 class="mb-3 cfont" >Sign Up</h1>
+                    <h6 class="cfont" >Enter all details</h6>
+                    <div class="mb-3 mt-3 cfont error" #err_msg  ></div>
+                </div>
+
+                <form #signup = "ngForm" method="post" (ngSubmit)="signupData(signup.value)"  >
+
+                    <div class="mb-3">
+                        <label for="exampleInputfname" class="form-label cfont">First Name</label>
+                        <input type="text" name="fname" class="form-control" id="exampleInputfname" #fname="ngModel" ngModel pattern="[A-Za-z]{2,}"  required>
+                        <small class="form-text text-muted cfont" *ngIf="fname.touched && !fname.valid" >First Name with atleast two letters is required</small>
+                      </div>
+                      
+                      <div class="mb-3">
+                        <label for="exampleInputlname" class="form-label cfont">Last Name</label>
+                        <input type="text"   name="lname" class="form-control" id="exampleInputlname" #lname="ngModel" ngModel pattern="[A-Za-z]{2,}" required> 
+                        <small class="form-text text-muted cfont" *ngIf="lname.touched && !lname.valid" >Last Name with atleast two letters is required</small>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="exampleInputphone" class="form-label cfont">Phone number</label>
+                        <input type="tel"  name="pno" class="form-control" id="exampleInputphone" #pno="ngModel" ngModel pattern="[1-9]{1}[0-9]{9}" required>
+                        <small class="form-text text-muted cfont" *ngIf="pno.touched && !pno.valid" >10 digit phone number is required without first digit being zero </small>
+                      </div>
+                      
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label cfont">Email address</label>
+                      <input type="email" name="email" class="form-control" id="exampleInputEmail1" #email="ngModel" aria-describedby="emailHelp" ngModel email required>
+                      <small class="form-text text-muted cfont" *ngIf="email.touched && !email.valid" >Email is required</small>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Password</label>
+                      <input type="password"  name="password" class="form-control cfont" id="exampleInputPassword1" #password="ngModel" ngModel required>
+                      <small class="form-text text-muted cfont" *ngIf="password.touched && !password.valid" >Password is required</small>
+                    </div>
+
+                    <div class="d-grid gap-2 mt-3">
+                      <button class="btn btn-danger cfont" type="submit" [disabled]="!signup.valid">Sign Up</button>
+                    </div>
+
+                  </form>
+
+                  <div class="mb-1 mt-3 link" >
+                    <a class="cfont"  routerLink="/login">Log In</a>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>

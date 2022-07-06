@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&family=Balthazar&family=Lobster&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+.container
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+.card
+{
+    text-align: center;
+    box-shadow: 5px 10px #dfdfdf;
+    padding: 40px;
+    border-radius: 0px;
+    /* position: relative; */
+}
+.cfont
+{
+    font-family: 'Poppins', sans-serif;
+}
+.heading
+{
+    font-size: xx-large;
+    font-weight: 500;
+}
+
+li
+{
+    
+    font-weight: 400;
+    font-size: xx-large;
+    list-style-type: none;
+}
