@@ -1,0 +1,39 @@
+<div class="container ">
+    <div class="row">
+        <div class="col-md-12">
+            <div class=" p-3 mb-5   card">
+                <div class="text-center">
+                    <h1 class="mb-3 mt-3 me-5 ms-5 cfont" >Enter details to be updated</h1>
+                    <div class="mb-3 mt-3 cfont error" #err_msg  ></div>
+                </div>
+
+                <form #updateForm = "ngForm" method="put" (ngSubmit)="updateData(updateForm.value)"  >
+
+                    <div class="mb-3">
+                        <label for="exampleInputfname" class="form-label cfont">First Name</label>
+                        <input type="text" [(ngModel)]="info.fname" name="fname" #fname="ngModel" class="form-control" id="exampleInputfname" pattern="[A-Za-z]{2,}"  required>
+                        <small class="form-text text-muted cfont" *ngIf="fname.touched && !fname.valid" >First Name with atleast two letters is required</small>
+                      </div>
+                      
+                      <div class="mb-3">
+                        <label for="exampleInputlname" class="form-label cfont">Last Name</label>
+                        <input type="text" [(ngModel)]="info.lname"  name="lname" class="form-control" id="exampleInputlname" #lname="ngModel"  pattern="[A-Za-z]{2,}" required> 
+                        <small class="form-text text-muted cfont" *ngIf="lname.touched && !lname.valid" >Last Name with atleast two letters is required</small>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="exampleInputphone" class="form-label cfont">Phone number</label>
+                        <input type="tel" [(ngModel)]="info.pno"  name="pno" class="form-control" id="exampleInputphone" #pno="ngModel"  pattern="[1-9]{1}[0-9]{9}" required>
+                        <small class="form-text text-muted cfont" *ngIf="pno.touched && !pno.valid" >10 digit phone number is required without first digit being zero </small>
+                      </div>
+
+                    <div class="d-grid gap-2 mt-3">
+                      <button class="btn btn-danger cfont" type="submit" [disabled]="!updateForm.valid">Update</button>
+                    </div>
+
+                  </form>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,6 @@
 import { Component, OnInit,ElementRef, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { body } from 'express-validator';
 import { DataService } from "../data.service";
 import { Router } from '@angular/router'
 
@@ -15,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   user: string[] = [];
   error: any;
+  headers:any;
   @ViewChild('err_msg')err_msg!: ElementRef;
 
   constructor(private dservice: DataService, private route: Router) {
@@ -29,7 +29,9 @@ export class LoginComponent implements OnInit {
         this.err_msg.nativeElement.innerHTML = `${res.message}`;
       }
       if (res.status == 1) {
-        this.route.navigate([`/details`, login.email]);
+        localStorage.setItem('token',res.token);
+        // this.route.navigate([`/details`, res.id]);
+        this.route.navigate([`/details`])
       }
     });
   }

@@ -1,10 +1,34 @@
 <div class="container">
     <div class="card"  >
         <div class="heading mb-3 cfont" >Details of user</div>
-    <ul *ngFor="let userData of info">
+    <!-- <ul *ngFor="let userData of info">
         <li class="cfont" >First Name : {{userData.fname}}</li>
         <li class="cfont" >Last Name : {{userData.lname}}</li>
         <li class="cfont" >Phone number : {{userData.pno}}</li>
-    </ul>
+    </ul> -->
+    <table class="table table-striped w-auto table-hover" >
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th></th>
+                <th>Phone Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let userData of info" >
+                <td>{{userData.fname}}</td>
+                <td> {{userData.lname}}</td>
+                <td></td>
+                <td>{{userData.pno}}</td>
+                <div>
+                <button class="btn btn-danger btn-sm btnCustom" (click)="viewUser(userData.id)">View</button>
+                <button class="btn btn-danger btn-sm btnCustom" (click)="deleteUser(userData.id)">Delete</button>
+                <button class="btn btn-danger btn-sm btnCustom" (click)="updateForm(userData.id)">Update</button>
+                <button class="btn btn-danger btn-sm btnCustom" (click)="chatApp(userData.id)">Chat</button>
+                </div>
+            </tr>
+        </tbody>
+    </table>
 </div>
 </div>

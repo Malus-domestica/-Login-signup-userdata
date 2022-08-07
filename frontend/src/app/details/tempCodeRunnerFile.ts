@@ -1,0 +1,1 @@
+console.log("Delete is presses id:",id);
