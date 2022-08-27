@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { io } from 'socket.io-client';
+import Swal from 'sweetalert2';
+import { Router } from "@angular/router"
 
 //const SOCKET_ENDPOINT = 'localhost:3000';
 @Injectable({
@@ -14,7 +16,7 @@ export class DataService {
 
   header:any={};
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private Router: Router) { }
 
   usersignup(signup: any){
     // console.log(signup);
@@ -52,8 +54,12 @@ export class DataService {
   setupSocketConnection(id: any) {
     this.socket = io(this.SOCKET_ENDPOINT);
     
-    // this.socket.emit('Authenticate');
+    this.socket.emit('Authenticate', id);
 
+    this.socket.on('Unauthorized-User', (err_msg: any) => {
+      Swal.fire(err_msg);
+      this.Router.navigate(['/details']);
+    });
     this.socket.on('message-broadcast', (data: string) => {
       if (data) {
         const element = document.createElement('li');

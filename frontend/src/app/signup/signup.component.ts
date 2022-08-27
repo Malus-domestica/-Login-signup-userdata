@@ -1,7 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { body } from 'express-validator';
 import { DataService } from "../data.service";
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
